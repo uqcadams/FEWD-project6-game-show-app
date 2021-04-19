@@ -8,14 +8,16 @@ let missed = 0;
 
 // Arrays
 const phrases = [
-    'chr is',
-    'jul ia',
-    'ri ne',
-    'la ura',
-    'ch elsea'
+    'chris',
+    'julia',
+    'rine',
+    'laura',
+    'chelsea'
 ];
 
-// Event listeners
+
+
+// -- turns the display overlay off to reveal the game board
 startGameButton.addEventListener('click', () => {
     startGameButton.parentElement.style.display = 'none';
 })
@@ -24,14 +26,12 @@ startGameButton.addEventListener('click', () => {
 // Functions 
 // -- creates an empty array, generates a random integer based on the length of the input array, uses that number to select a value (as an index). Then splits the selected value into a new array, and returns the new phrase array.
 getRandomPhraseAsArray = (arr) => {
-    let randomPhrase = [];
-    let randomNumber = (Math.floor(Math.random() * arr.length));
-    randomPhrase = phrases[randomNumber];
-    randomPhrase = randomPhrase.split('');
-    return randomPhrase;
+  let randomPhrase = [];
+  let randomNumber = Math.floor(Math.random() * arr.length);
+  randomPhrase = phrases[randomNumber];
+  randomPhrase = randomPhrase.split("");
+  return randomPhrase;
 }
-
-const phraseArray = getRandomPhraseAsArray(phrases);
 
 // -- takes an array and assigns the "letter" class to the values that are letters, and the "space" class to the spaces.
 addPhraseToDisplay = (arr) => {
@@ -49,24 +49,77 @@ addPhraseToDisplay = (arr) => {
   }
 };
 
+
+//// startGameButton.addEventListener('click', () => {})
+//// const getRandomPhraseAsArray = arr => {}
+//// const addPhraseToDisplay = arr => {}
+//// const checkLetter = arr => {}
+// qwerty.addEventListener('click', e => {})
+// const checkWin = () => {}
+
+
+// @@@ delete this later @@@ pre-places phrase on page
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray);
+
+
+checkLetter = (buttonTarget) => {
+    let checkLetter = document.querySelectorAll('#phrase li');
+    let match = false;
+
+    for (let i = 0; i < checkLetter.length; i++) {
+        console.log(checkLetter[i].textContent);
+        if (buttonTarget.textContent === checkLetter[i].textContent) {
+            checkLetter[i].className += " show";
+            return true;
+            break;
+        }
+    }
+}
+
+
+// qwerty.addEventListener('click', e => {})
+
+qwerty.addEventListener("click", (e) => {
+  console.log("qwerty event listener activated");
+
+  let clickedButton = e.target;
+
+  if (clickedButton.tagName === "BUTTON") {
+    clickedButton.className += " chosen";
+    checkLetter(clickedButton);
+    clickedButton.disabled = true;
+  }
+});
+
 // checkLetter = (buttonTarget) => {
-//     let letterElements = document.querySelectorAll('.letter)';
-//     for ( let i = 0; i > letterElements.length; i++ ) {
+//     console.log('check letter function activated');
+//     console.log(`buttonTarget.textContent is ${buttonTarget.textContent}`);
+//     let letterElements = document.querySelectorAll('.letter');
+//     let letterFound = ['hi'];
+//     for ( let i = 0; i < letterElements.length; i++ ) {
 //         if ( buttonTarget.textContent === letterElements[i].textContent ) {
 //             letterElements[i].className += " show";
-//         } else {
-//             return null;
+//             // letterFound += letterFound.push(letterElements[i].textContent);
+//             letterFound += letterFound.push(`${letterElements[i].textContent}`);
+//             console.log(letterFound);
+//             console.log('added class');
+
+//         } 
+//         else {
+//             missed ++;
+//             console.log(`Missed = ${missed}`);
+//             // return null;
 //         }
 //     }
 // }
 
-let targetTest = document.getElementsByTagName('button');
 
-function changeButtonRed(arr) {
-    for (let i = 0; i < arr.length; i++ ) {
-        arr[i].style.color = 'red';
-    }
-}
+
+// -- Test to log the target button to the console
+// testFunction = (buttonTarget) => {
+//     console.log(buttonTarget.textContent);
+// }
 
 
 
