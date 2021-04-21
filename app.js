@@ -16,11 +16,11 @@ let missed = 0;
 // Arrays
   // stores array of phrases to parse into game
 const phrases = [
-    'chris',
-    'test',
-    'one',
-    'okay',
-    'four'
+    'pineapples',
+    'kangaroo',
+    'koala',
+    'platypus',
+    'wombat'
 ];
 
 // -- turns the display overlay off to reveal the game board
@@ -50,7 +50,6 @@ addPhraseToDisplay = (arr) => {
         li.className = "space";
     }
     ul.appendChild(li);
-    console.log(arr[i]);
   }
 };
 
@@ -62,7 +61,6 @@ checkLetter = (buttonTarget) => {
     let match = null;
   // loops through checkLetter array
     for (let i = 0; i < checkLetter.length; i++) {
-        console.log(checkLetter[i].textContent);
   // if text of button target is in checkLetter array, add show class to it
         if (buttonTarget.textContent === checkLetter[i].textContent) {
             checkLetter[i].className += " show";
@@ -74,7 +72,6 @@ checkLetter = (buttonTarget) => {
 
 // -- adds a click event to the qwerty element
 qwerty.addEventListener("click", (e) => {
-  console.log("qwerty event listener activated");
 
   let clickedButton = e.target;
 
@@ -88,9 +85,7 @@ qwerty.addEventListener("click", (e) => {
     clickedButton.disabled = true;
     // ... then see if it found a letter
     if (match === null) {
-      console.log('no letter was found');
       missed++;
-      console.log(missed);
         // selects the heart elements
       let heart = document.querySelector('#scoreboard ol').firstElementChild;
       heart.remove();
@@ -115,3 +110,7 @@ checkWin = () => {
 
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
+
+
+
+
