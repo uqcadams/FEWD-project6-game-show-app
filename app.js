@@ -23,10 +23,24 @@ const phrases = [
     'wombat'
 ];
 
-// -- turns the display overlay off to reveal the game board
+
+
+// -- click event for overlay start button. reloads the window to start the game if the reset class has been added to the button. if the the reset class is absent, it starts the game, hides the overlay, and then changes the text and class of the button for when the user wins or loses the game.
 startGameButton.addEventListener('click', () => {
+    if (startGameButton.className === 'btn__reset reset') {
+      window.location.reload();
+    }
     startGameButton.parentElement.style.display = 'none';
+    reset_button();
 })
+
+// -- changes the text of the overlay button and adds a reset button
+reset_button = () => {
+  startGameButton.textContent = "Try Again";
+  startGameButton.className += " reset"
+}
+
+
 
 // Functions 
   // -- creates an empty array, generates a random integer based on the length of the input array, uses that number to select a value (as an index). Then splits the selected value into a new array, and returns the new phrase array.
