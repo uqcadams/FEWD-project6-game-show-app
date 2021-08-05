@@ -14,15 +14,24 @@ const overlay = document.querySelector('#overlay');
 let missed = 0;
 
 // Arrays
+// REMOVED --> TAKES ARRAY FROM wordsAPI.js
   // stores array of phrases to parse into game
-const phrases = [
-    'pineapples',
-    'kangaroo',
-    'koala',
-    'platypus',
-    'wombat'
-];
+// const phrases = [
+//     'pineapples',
+//     'kangaroo',
+//     'koala',
+//     'platypus',
+//     'wombat'
+// ];
 
+// const testArrayOfObjects = [
+//   {
+//     "word": "manuel estrada",
+//     "pronunciation": {
+//       "all": "'mɑnwɛl_ɛs'tRɑðɑ"
+//     }
+//   }
+// ]
 
 
 // -- click event for overlay start button. reloads the window to start the game if the reset class has been added to the button. if the the reset class is absent, it starts the game, hides the overlay, and then changes the text and class of the button for when the user wins or loses the game.
@@ -43,14 +52,23 @@ reset_button = () => {
 
 
 // Functions 
+// NEW FUNCTIONS
+
+// const convertPhraseToArray = (phraseArray) => {
+//   let phrase = [];
+//   phrase = phraseArray[0].word.split("");
+//   return phrase;
+// }
+
   // -- creates an empty array, generates a random integer based on the length of the input array, uses that number to select a value (as an index). Then splits the selected value into a new array, and returns the new phrase array.
-getRandomPhraseAsArray = (arr) => {
-  let randomPhrase = [];
-  let randomNumber = Math.floor(Math.random() * arr.length);
-  randomPhrase = phrases[randomNumber];
-  randomPhrase = randomPhrase.split("");
-  return randomPhrase;
-}
+  // replaced with convert phrase to array test function
+// getRandomPhraseAsArray = (arr) => {
+//   let randomPhrase = [];
+//   let randomNumber = Math.floor(Math.random() * arr.length);
+//   randomPhrase = phrases[randomNumber];
+//   randomPhrase = randomPhrase.split("");
+//   return randomPhrase;
+// }
 
   // -- takes an array and assigns the "letter" class to the values that are letters, and the "space" class to the spaces. Then, it appends them to the phrase section for display on the screen.
 addPhraseToDisplay = (arr) => {
@@ -122,8 +140,8 @@ checkWin = () => {
   }
 }
 
-const phraseArray = getRandomPhraseAsArray(phrases);
-addPhraseToDisplay(phraseArray);
+// const phraseArray = getRandomPhraseAsArray(randomWordArray);
+// addPhraseToDisplay(phraseArray);
 
 
 
